@@ -6,21 +6,25 @@ import Player from '../componants/Player'
 import Register from '../componants/Register'
 import Messages from '../componants/Messages'
 function App() {
- const [players,setPlayers]=useState([]);
- const [register,setRegister]=useState("signup");
- const [message,setMessage]=useState(null)
- function ChangePage(registerMethod){
- setRegister(registerMethod);}
+  const [players, setPlayers] = useState([]);
+  const [register, setRegister] = useState("signup");
+  const [message, setMessage] = useState(null)
+  const [alert, setAlert] = useState(0);
+  const [addPlayer, setAddPlayer] = useState(1);
+  const [startGame, setStartGame] = useState(0);
 
- function updateAlert(message,type){
-  setMessage({message:message,type:type})
- }
- 
+  function ChangePage(registerMethod) {
+    setRegister(registerMethod);
+  }
+
+  function updateAlert(message, type) {
+    setMessage({ message: message, type: type, funcType: [setAlert, setAddPlayer, setStartGame] })
+  }
+
   return (<>
-    <Register setPlayers={setPlayers} type={register}  ChangePage={ChangePage}  alertMessage={updateAlert}></Register>
-    <div>{players.map((value, index) => { return <Player name={value} key={index}></Player> })}</div>
-    {console.log(message)}
-    {message?<Messages message={message.message} type={message.type}></Messages>:null}
+    {addPlayer && <Register setPlayers={setPlayers} type={register} ChangePage={ChangePage} alertMessage={updateAlert}></Register>}
+    {message ? <Messages message={message.message} type={message.type} funcType={message.funcType} setMessage={setMessage}></Messages> : null}
+    {startGame && <div>{players.map((value, index) => { return <Player name={value} key={index}></Player> })}</div>}
   </>)
 }
 
