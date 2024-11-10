@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import "../src/Player.css";
 
+let flag = false
 function Player({ name }) {
     const [number, setNumber] = useState(Math.floor(Math.random() * 100));
     const [steps, setSteps] = useState(0);
-    const [addedToarray,setAddedToArray]=useState(0);
+    const [addedToarray, setAddedToArray] = useState(0);
     function updateScore() {
         let user = JSON.parse(localStorage.getItem(name)) || { scoreArray: [] };
-        user.scoreArray.push(steps+1);
+        user.scoreArray.push(steps);
         localStorage.setItem(name, JSON.stringify(user));
     }
 
@@ -15,13 +16,17 @@ function Player({ name }) {
     function handleUpdate(updateFunc) {
         setNumber((prevNumber) => {
             const newNumber = updateFunc(prevNumber);
-            if (newNumber === 100&&addedToarray==0) {
-                updateScore();
-                setAddedToArray(1);
-            }
             return newNumber;
         });
         setSteps((prevSteps) => prevSteps + 1);
+    }
+
+    if (number === 100 && !flag) {
+        flag = true
+        updateScore();
+        setAddedToArray(1);
+    } else if (number !== 100) {
+        flag = false
     }
 
     return (
