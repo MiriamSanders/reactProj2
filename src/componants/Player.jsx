@@ -1,27 +1,49 @@
 import React, { useState } from "react";
 import "../Player.css";
 
+let flag = false
 function Player({ name }) {
     const [number, setNumber] = useState(Math.floor(Math.random() * 100));
     const [steps, setSteps] = useState(0);
     const [addedToarray, setAddedToArray] = useState(0);
+<<<<<<< HEAD:src/componants/Player.jsx
 
     function updateScore() {
         let user = JSON.parse(localStorage.getItem(name)) || { scoreArray: [] };
         user.scoreArray.push(steps + 1);
+=======
+    function updateScore() {
+        let user = JSON.parse(localStorage.getItem(name)) || { scoreArray: [] };
+        user.scoreArray.push(steps);
+>>>>>>> 65d6d2719d1c9682ee42920a697232e26ca7a41a:componants/Player.jsx
         localStorage.setItem(name, JSON.stringify(user));
     }
     function handleUpdate(updateFunc) {
         setNumber((prevNumber) => {
             const newNumber = updateFunc(prevNumber);
+<<<<<<< HEAD:src/componants/Player.jsx
             if (newNumber === 100 && addedToarray == 0) {
                 updateScore();
                 setAddedToArray(1);
             }
+=======
+>>>>>>> 65d6d2719d1c9682ee42920a697232e26ca7a41a:componants/Player.jsx
             return newNumber;
         });
         setSteps((prevSteps) => prevSteps + 1);
     }
+<<<<<<< HEAD:src/componants/Player.jsx
+=======
+
+    if (number === 100 && !flag) {
+        flag = true
+        updateScore();
+        setAddedToArray(1);
+    } else if (number !== 100) {
+        flag = false
+    }
+
+>>>>>>> 65d6d2719d1c9682ee42920a697232e26ca7a41a:componants/Player.jsx
     return (
         <div className="player-container">
             <span className="player-name">Player: {name}</span>
