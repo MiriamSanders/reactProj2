@@ -1,0 +1,29 @@
+button {
+    width: 15vw;
+    height: 3.25vw;
+    margin: 10px auto;
+    justify-content: center;
+    display: block;
+    color: #2c2b2b;
+    background: #868585;
+    border: none;
+    font-size: 1vw;
+    font-weight: bold;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    transition: 0.2s ease-in;
+    cursor: pointer;
+    position: relative;
+}
+
+.message {
+    color: white;
+    font-size: 3vw;
+    text-shadow: 60px 90px 180px #3a3939;
+    position: relative;
+    font-weight: bold;
+    font-family: cursive;
+    font-weight: 900;
+    margin: auto;
+}
