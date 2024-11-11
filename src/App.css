@@ -73,3 +73,6 @@ body {
 .read-the-docs {
   color: #888;
 }
+.flex-div{
+  display: flex;
+}

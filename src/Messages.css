@@ -27,3 +27,7 @@ button {
     font-weight: 900;
     margin: auto;
 }
+
+.flex-btn{
+    display: flex;
+}
