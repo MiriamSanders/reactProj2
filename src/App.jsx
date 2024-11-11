@@ -20,19 +20,18 @@ function App() {
   function updateAlert(message, type) {
     setMessage({ message: message, type: type, funcType: [setAlert, setAddPlayer, setStartGame] })
   }
-function removePlayer(index1)
-{
-  setPlayers(prevPlayers=>prevPlayers.map((value,index)=>{if(index==index1)null}));
-  console.log(players);
-  
+  function removePlayer(idToRemove) {
+    setPlayers(prevPlayers => prevPlayers.filter(player => player.id !== idToRemove));
 }
+
+
   return (
     <>
       <Leaders></Leaders>
       <h1 className="title">Get to 100</h1>
-      {addPlayer && <Register setPlayers={setPlayers} type={register} ChangePage={ChangePage} alertMessage={updateAlert}></Register>}
+      {addPlayer ? <Register setPlayers={setPlayers} type={register} ChangePage={ChangePage} alertMessage={updateAlert}></Register>:null}
       {message ? <Messages message={message.message} type={message.type} funcType={message.funcType} setMessage={setMessage}></Messages> : null}
-      {startGame && <div className='flex-div'>{players.map((value, index) => { return <Player name={value} key={index} index={index} turn={turn} setTurn={setTurn} numPlayers={players.length} removePlayer={removePlayer}></Player> })}</div>}
+      {startGame ?<div className='flex-div'>{players.map((value, index) => { return <Player name={value.name} key={value.id} index={value.id} myturn={index} turn={turn} setTurn={setTurn} numPlayers={players.length} removePlayer={removePlayer}></Player> })}</div>:null}
     </>
   )
 }

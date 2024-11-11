@@ -1,0 +1,59 @@
+/* Container for the leaderboard */
+.leaderboard-container {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    text-align: center;
+    z-index: 1000;
+}
+
+/* Button to show the leaderboard */
+.show-button {
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+/* Leaderboard box styling */
+.leaderboard {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 150px;
+}
+
+/* Header */
+.leaderboard h3 {
+    margin: 0 0 8px;
+    font-size: 16px;
+    color: #333;
+}
+
+/* Each leader item */
+.leader-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 4px 0;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+}
+
+.leader-item:last-child {
+    border-bottom: none;
+}
+
+.leader-name {
+    font-weight: bold;
+    color: #555;
+}
+
+.leader-score {
+    color: #007bff;
+}
