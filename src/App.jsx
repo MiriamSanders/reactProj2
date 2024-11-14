@@ -23,7 +23,7 @@ function App() {
   function removePlayer(idToRemove) {
     setPlayers(prevPlayers => prevPlayers.filter(player => player.id !== idToRemove));
   }
-  function startNewGame()
+  function endGame()
   {
     setAddPlayer(1);
     setStartGame(0);
@@ -31,7 +31,7 @@ function App() {
 
   return (
     <>
-    <button onClick={startNewGame} className='new-game-button'>Start new game</button>
+     {startGame?<button onClick={endGame} className='new-game-button'>End game</button>:null}
       <Leaders></Leaders>
       <h1 className="title">Get to 100</h1>
       {addPlayer ? <Register setPlayers={setPlayers} type={register} ChangePage={ChangePage} alertMessage={updateAlert}></Register> : null}
