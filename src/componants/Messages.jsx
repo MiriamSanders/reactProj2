@@ -3,7 +3,7 @@ import "../Messages.css"
 
 function Messages({ message, type, funcType, setMessage }) {
     return (
-        <>
+        <div className="message-container">
             <span className="message">{message}</span>
             {type == "alert" && <button onClick={() => { funcType[0](1); setMessage(null) }}>OK</button>}
             {type == "successfulSignUp" && (
@@ -14,7 +14,7 @@ function Messages({ message, type, funcType, setMessage }) {
                     </div>
                 </>
             )}
-        </>
+        </div>
     )
 }
 

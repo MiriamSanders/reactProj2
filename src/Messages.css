@@ -31,3 +31,9 @@ button {
 .flex-btn{
     display: flex;
 }
+.message-container{
+    position: fixed;
+    top:30%;
+    right: 10px;
+    width: 30%;
+}

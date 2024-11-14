@@ -50,3 +50,9 @@
 .hide{
   display: none;
 }
+.score-array-display{
+  display: inline;
+}
+.disable{
+  background-color: #797979;
+}
