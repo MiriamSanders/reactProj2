@@ -3,7 +3,7 @@
   margin: 10px;
   border: 2px solid #ccc;
   border-radius: 8px;
-  background-color: #f9f9f9;
+  background-color: #292828;
   max-width: 200px;
   text-align: center;
 }
@@ -47,12 +47,15 @@
 .player-buttons button:active {
   transform: scale(0.95);
 }
-.hide{
+
+.hide {
   display: none;
 }
-.score-array-display{
+
+.score-array-display {
   display: inline;
 }
-.disable{
-  background-color: #797979;
+
+.disable {
+  background-color: #706d6d;
 }

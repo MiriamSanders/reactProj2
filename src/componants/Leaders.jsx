@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../leaders.css";
+import "../styles/Leaders.css";
 
 function Leaders() {
     const [leaders, setLeaders] = useState([]);

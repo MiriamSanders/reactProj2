@@ -1,7 +1,5 @@
-
 import React, { useState } from "react";
-import Messages from "./Messages";
-import "../Register.css";
+import "../styles/Register.css";
 
 function Register({ setPlayers, type, ChangePage, alertMessage }) {
     const [userName, setUserName] = useState("");
@@ -13,36 +11,38 @@ function Register({ setPlayers, type, ChangePage, alertMessage }) {
         setEmail("");
         setPassword("");
     }
-
+    function validateEmail(email) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
     function signUpFunction(event) {
         event.preventDefault();
         if (localStorage.getItem(userName)) {
-            alertMessage("user name already exists", "alert");
-        }
-        else {
+            alertMessage("User name already exists", "alert");
+        } else if (!validateEmail(email)) {
+            alertMessage("Invalid email format. Must include '@'", "alert");
+        } else if (password.length < 6) {
+            alertMessage("Password must be at least 6 characters long", "alert");
+        } else {
             localStorage.setItem(userName, JSON.stringify({ email: email, password: password, scoreArray: [] }));
             setPlayers(prevPlayers => [...prevPlayers, { name: userName, id: Date.now() }]);
-            alertMessage("successfully added to the game!", "successfulSignUp");
-            resetForm(); // Clear form after successful sign up
+            alertMessage("Successfully added to the game!", "successfulSignUp");
+            resetForm();
         }
+        resetForm();
     }
-
     function loginFunction(event) {
         event.preventDefault();
         if (localStorage.getItem(userName)) {
             let user = JSON.parse(localStorage.getItem(userName));
             if (user.password === password) {
                 setPlayers(prevPlayers => [...prevPlayers, { name: userName, id: Date.now() }]);
-                alertMessage("successfully added to the game!", "successfulSignUp");
-                resetForm(); // Clear form after successful login
-            } else {
+                alertMessage("Successfully logged in!", "successfulSignUp");
+                resetForm();
+            } else
                 alertMessage("Incorrect password", "alert");
-            }
-        } else {
+        } else
             alertMessage("User does not exist", "alert");
-        }
     }
-
     return (
         <>
             <form className="register-form" onSubmit={(type === "signup") ? signUpFunction : loginFunction}>
@@ -52,6 +52,7 @@ function Register({ setPlayers, type, ChangePage, alertMessage }) {
                     placeholder="User name"
                     value={userName}
                     onChange={(e) => setUserName(e.target.value)}
+                    required
                 />
                 {type === "signup" && (
                     <input
@@ -60,7 +61,7 @@ function Register({ setPlayers, type, ChangePage, alertMessage }) {
                         placeholder="Email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        required //need to add require @ in email address
+                        required
                     />
                 )}
                 <input
@@ -76,16 +77,16 @@ function Register({ setPlayers, type, ChangePage, alertMessage }) {
                 <input
                     className="register-input"
                     type="submit"
-                    value="Sign Up"
+                    value={type === "signup" ? "Sign Up" : "Log In"}
                 />
                 {type === "signup" && (
                     <button className="register-button" onClick={() => ChangePage("login")}>
-                        already have an account? login
+                        Already have an account? Log in
                     </button>
                 )}
                 {type === "login" && (
                     <button className="register-button" onClick={() => ChangePage("signup")}>
-                        don't have an account? signUp
+                        Don't have an account? Sign up
                     </button>
                 )}
             </form>
@@ -94,4 +95,3 @@ function Register({ setPlayers, type, ChangePage, alertMessage }) {
 }
 
 export default Register;
-

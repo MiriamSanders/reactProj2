@@ -1,4 +1,3 @@
-/* Container for the leaderboard */
 .leaderboard-container {
     position: fixed;
     top: 10px;
@@ -7,7 +6,6 @@
     z-index: 1000;
 }
 
-/* Button to show the leaderboard */
 .show-button {
     padding: 8px 12px;
     border: none;
@@ -17,7 +15,6 @@
     font-size: 14px;
 }
 
-/* Leaderboard box styling */
 .leaderboard {
     background-color: #f9f9f9;
     border: 1px solid #ddd;
@@ -27,14 +24,12 @@
     width: 150px;
 }
 
-/* Header */
 .leaderboard h3 {
     margin: 0 0 8px;
     font-size: 16px;
     color: #333;
 }
 
-/* Each leader item */
 .leader-item {
     display: flex;
     justify-content: space-between;
@@ -53,5 +48,5 @@
 }
 
 .leader-score {
-    color: #007bff;
+    color: #282829;
 }

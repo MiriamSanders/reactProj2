@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import "../Player.css";
+import "../styles/Player.css";
 
 let flag = false;
 function Player({ name, turn, setTurn, myturn, numPlayers, index, removePlayer }) {
     const [number, setNumber] = useState(Math.floor(Math.random() * 100));
     const [steps, setSteps] = useState(0);
+    const [showScores, setShowScores] = useState(false);
     let scores = JSON.parse(localStorage.getItem(name)).scoreArray;
 
     function updateScore(updatedSteps) {
@@ -23,13 +24,15 @@ function Player({ name, turn, setTurn, myturn, numPlayers, index, removePlayer }
             }
             return newNumber;
         });
-
         setSteps((prevSteps) => prevSteps + 1);
         setTurn((prevTurn) => (prevTurn + 1) % numPlayers);
     }
+    function toggleScores() {
+        setShowScores(!showScores);
+    }
 
     return (
-        <div className={ myturn!=turn?"player-container disable":"player-container" }  >
+        <div className={myturn != turn ? "player-container disable" : "player-container"}  >
             <span className="player-name">Player: {name}</span>
             <span className="player-number">Current number: {number}</span>
             <span className="player-steps">Number of steps taken: {steps}</span>
@@ -49,7 +52,14 @@ function Player({ name, turn, setTurn, myturn, numPlayers, index, removePlayer }
                     </div>
                 )}
             </div>
-            <div className="score-array-display">scores: {scores.map((value, index) => (<p style={{display: "inline"}} key={index}>{value},</p>))}</div>
+            <button onClick={toggleScores} className="score-array-display">Scores</button>
+            {showScores && (
+                <div className="score-array">
+                    {scores.map((value, index) => (
+                        <p style={{ display: "inline" }} key={index}>{value}, </p>
+                    ))}
+                </div>
+            )}
         </div>
     );
 }

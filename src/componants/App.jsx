@@ -1,9 +1,9 @@
 import { useState } from 'react'
-import './App.css'
-import Player from './componants/Player'
-import Register from './componants/Register'
-import Messages from './componants/Messages'
-import Leaders from './componants/Leaders'
+import "../styles/App.css";
+import Player from './Player'
+import Register from './Register'
+import Messages from './Messages'
+import Leaders from './Leaders'
 
 function App() {
   const [players, setPlayers] = useState([]);
@@ -23,15 +23,14 @@ function App() {
   function removePlayer(idToRemove) {
     setPlayers(prevPlayers => prevPlayers.filter(player => player.id !== idToRemove));
   }
-  function endGame()
-  {
+  function endGame() {
     setAddPlayer(1);
     setStartGame(0);
   }
 
   return (
     <>
-     {startGame?<button onClick={endGame} className='new-game-button'>End game</button>:null}
+      {startGame ? <button onClick={endGame} className='end-game-button'>End game</button> : null}
       <Leaders></Leaders>
       <h1 className="title">Get to 100</h1>
       {addPlayer ? <Register setPlayers={setPlayers} type={register} ChangePage={ChangePage} alertMessage={updateAlert}></Register> : null}

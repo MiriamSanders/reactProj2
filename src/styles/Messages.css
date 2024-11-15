@@ -1,5 +1,5 @@
 button {
-    width: 15vw;
+    width: 10vw;
     height: 3.25vw;
     margin: 10px auto;
     justify-content: center;
@@ -18,8 +18,8 @@ button {
 }
 
 .message {
-    color: white;
-    font-size: 3vw;
+    color: rgb(33, 32, 32);
+    font-size: 1.5vw;
     text-shadow: 60px 90px 180px #3a3939;
     position: relative;
     font-weight: bold;
@@ -28,12 +28,16 @@ button {
     margin: auto;
 }
 
-.flex-btn{
+.flex-btn {
     display: flex;
 }
-.message-container{
+
+.message-container {
     position: fixed;
-    top:30%;
+    background-color: rgb(197, 195, 195);
+    border: #2c2b2b solid;
+    border-radius: 5px;
+    top: 30%;
     right: 10px;
     width: 30%;
 }
