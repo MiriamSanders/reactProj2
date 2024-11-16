@@ -18,7 +18,11 @@ function App() {
     setRegister(registerMethod);
   }
   function updateAlert(message, type) {
-    setMessage({ message: message, type: type, funcType: [setAlert, setAddPlayer, setStartGame] })
+    setMessage({
+      message: message,
+      type: type,
+      funcType: [setAlert, setAddPlayer, setStartGame]
+    })
   }
   function removePlayer(idToRemove) {
     setPlayers(prevPlayers => prevPlayers.filter(player => player.id !== idToRemove));
